@@ -1,0 +1,13 @@
+name: 'Tag UPM Readme'
+description: 'Tag a link in Unity Package Readme'
+inputs:
+  path:  # id of input
+    description: 'Path to Readme'
+    required: true
+    default: 'Readme.md'
+  version-number:  
+    description: 'version to add as tag'
+    required: true
+runs:
+  using: 'node16'
+  main: 'index.js'
