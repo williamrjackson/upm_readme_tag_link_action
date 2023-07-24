@@ -5,8 +5,14 @@ inputs:
     description: 'Path to Readme'
     required: true
     default: 'Readme.md'
-  version-number:  
-    description: 'version to add as tag'
+  major:  
+    description: 'version major to add as tag'
+    required: true
+  minor:  
+    description: 'version minor to add as tag'
+    required: true
+  patch:  
+    description: 'version patch to add as tag'
     required: true
 runs:
   using: 'node16'
