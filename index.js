@@ -3,14 +3,18 @@ const core = require('@actions/core');
 function run() {
   var fs = require('fs')
     const readmePath = core.getInput('path');
-    const version = core.getInput('version-number');
+    const maj = core.getInput('major');
+    const min = core.getInput('minor');
+    const pch = core.getInput('patch');
     fs.readFile(readmePath, 'utf8', function (err, data) {
       if (err) {
         core.setFailed(err);
       } else {
-        const regex =/#v{1}\d{1,2}\.\d{1,2}\.\d{1,3}/g
-        let replaced = data.replace(regex, `#v${version}`);
-        fs.writeFile(readmePath, replaced, function (err) {
+        const regexMinor =/#v{1}\d{1,2}\.\d{1,2}/g
+        const regexPatch =/#v{1}\d{1,2}\.\d{1,2}\.\d{1,3}/g
+        data = data.replace(regexMinor, `#v${maj}.${min}`);
+        data = data.replace(regexPatch, `#v${maj}.${min}.${pch}`);
+        fs.writeFile(readmePath, data, function (err) {
           if (err) {
             core.setFailed(err);
           }
