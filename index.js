@@ -12,9 +12,9 @@ function run() {
       } else {
         const regexMinor =/#v{1}\d{1,2}\.\d{1,2}/g
         const regexPatch =/#v{1}\d{1,2}\.\d{1,2}\.\d{1,3}/g
-        data = data.replace(regexMinor, `#v${maj}.${min}`);
-        data = data.replace(regexPatch, `#v${maj}.${min}.${pch}`);
-        fs.writeFile(readmePath, data, function (err) {
+        let updated = data.replace(regexMinor, `#v${maj}.${min}`);
+        updated = updated.replace(regexPatch, `#v${maj}.${min}.${pch}`);
+        fs.writeFile(readmePath, updated, function (err) {
           if (err) {
             core.setFailed(err);
           }
