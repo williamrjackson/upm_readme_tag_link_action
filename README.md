@@ -1,23 +1,25 @@
-# Hello world javascript action
+# Unity Package Readme Tagging Action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This GitHub Action tags a link in a Unity Package Readme file with a version number.
 
 ## Inputs
 
-### `who-to-greet`
+This action requires the following inputs:
 
-**Required** The name of the person to greet. Default `"World"`.
+- `path`: The path to the Readme file. By default, this is set to 'Readme.md'.
+- `major`: The major version number to add as a tag.
+- `minor`: The minor version number to add as a tag.
+- `patch`: The patch version number to add as a tag.
 
-## Outputs
+## Usage
 
-### `time`
-
-The time we greeted you.
-
-## Example usage
+To use this action in your workflow, add the following step:
 
 ```yaml
-uses: actions/upm_version_increment_action
-with:
-  who-to-greet: 'Mona the Octocat'
-```
+- name: Tag Readme
+  uses: your-github-username/your-repository@v1
+  with:
+    path: 'path/to/your/Readme.md'
+    major: '1'
+    minor: '0'
+    patch: '0'
